@@ -19,10 +19,10 @@ public class Player extends Actor
     {
         // temporary movement keys
         if (Greenfoot.isKeyDown("w")) {
-            deltaY = 3;
+            deltaY = -3;
         }
         if (Greenfoot.isKeyDown("s")) {
-            deltaY = -3;
+            deltaY = 3;
         }
         if (Greenfoot.isKeyDown("a")) {
             deltaX = -3;
@@ -30,6 +30,7 @@ public class Player extends Actor
         if (Greenfoot.isKeyDown("d")) {
             deltaX = 3;
         }
+        // Right now player character glides, fix asap
         setLocation(getX() + deltaX, getY() + deltaY);
     }
 }
