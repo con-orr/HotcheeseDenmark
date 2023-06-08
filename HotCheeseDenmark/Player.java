@@ -30,6 +30,7 @@ public class Player extends Actor
         if (Greenfoot.isKeyDown("d")) {
             deltaX = 3;
         }
+        // Right now player character glides, fix asap
         setLocation(getX() + deltaX, getY() + deltaY);
     }
 }
