@@ -19,5 +19,6 @@ public class MyWorld extends World
         super(800, 800, 1,false); 
         p1 = new Player();
         addObject(p1,400,400);
+        
     }
 }
