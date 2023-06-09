@@ -1,12 +1,11 @@
 #Greenfoot project file
 class.Enemy.image=man01.png
 class.Player.image=man01.png
-class.beamOfSight.image=ball.png
+class.beamOfSight.image=invis.png
 class.wall.image=lift-closed.png
 dependency1.from=MyWorld
 dependency1.to=Player
 dependency1.type=UsesDependency
-<<<<<<< HEAD
 dependency2.from=MyWorld
 dependency2.to=Enemy
 dependency2.type=UsesDependency
@@ -17,10 +16,10 @@ dependency4.from=beamOfSight
 dependency4.to=MyWorld
 dependency4.type=UsesDependency
 dependency5.from=beamOfSight
-dependency5.to=wall
+dependency5.to=Player
 dependency5.type=UsesDependency
 dependency6.from=beamOfSight
-dependency6.to=Player
+dependency6.to=wall
 dependency6.type=UsesDependency
 dependency7.from=Enemy
 dependency7.to=beamOfSight
@@ -28,24 +27,13 @@ dependency7.type=UsesDependency
 dependency8.from=Enemy
 dependency8.to=MyWorld
 dependency8.type=UsesDependency
-=======
-dependency2.from=Enemy
-dependency2.to=MyWorld
-dependency2.type=UsesDependency
->>>>>>> e2b2fe6969728046f6671841bfbdece298166fe7
 editor.fx.0.height=739
 editor.fx.0.width=816
 editor.fx.0.x=232
 editor.fx.0.y=82
-<<<<<<< HEAD
 height=1000
 package.numDependencies=8
 package.numTargets=5
-=======
-height=985
-package.numDependencies=2
-package.numTargets=3
->>>>>>> e2b2fe6969728046f6671841bfbdece298166fe7
 project.charset=UTF-8
 publish.hasSource=false
 publish.locked=true
@@ -98,5 +86,5 @@ target5.y=0
 version=3.0.0
 width=1296
 world.lastInstantiated=MyWorld
-xPosition=117
-yPosition=100
+xPosition=0
+yPosition=0

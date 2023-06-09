@@ -9,6 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class beamOfSight extends Actor
 {
     Enemy spawn;
+    int life = 120;
     public beamOfSight(Enemy spawn){
         this.spawn=spawn;
         int px = MyWorld.p1.getX();
@@ -21,22 +22,23 @@ public class beamOfSight extends Actor
     public void act()
     {
         // Add your action code here.
+        life--;
         if(MyWorld.p1.getX()>getX()){
-            setLocation(getX()+2,getY());
+            setLocation(getX()+20,getY());
         }
         if(MyWorld.p1.getX()<getX()){
-            setLocation(getX()-2,getY());
+            setLocation(getX()-20,getY());
         }
         if(MyWorld.p1.getY()>getY()){
-            setLocation(getX(),getY()+2);
+            setLocation(getX(),getY()+20);
         }
         if(MyWorld.p1.getY()<getY()){
-            setLocation(getX(),getY()-2);
+            setLocation(getX(),getY()-20);
         }
         if(isTouching(Player.class)){
             spawn.seePlayer=60;
         }
-        if(isTouching(wall.class)){
+        if(isTouching(wall.class)||life<=0){
             getWorld().removeObject(this);
         }
         
