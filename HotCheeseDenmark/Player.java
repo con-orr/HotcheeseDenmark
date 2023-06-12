@@ -17,20 +17,18 @@ public class Player extends Actor
      */
     public void act()
     {
-        // temporary movement keys
+        // movement keys
         if (Greenfoot.isKeyDown("w")) {
-            deltaY = -3;
+            setLocation(getX(), getY() - 3);
         }
         if (Greenfoot.isKeyDown("s")) {
-            deltaY = 3;
+            setLocation(getX(), getY() + 3);
         }
         if (Greenfoot.isKeyDown("a")) {
-            deltaX = -3;
+            setLocation(getX() - 3, getY());
         }
         if (Greenfoot.isKeyDown("d")) {
-            deltaX = 3;
+            setLocation(getX() + 3, getY());
         }
-        // Right now player character glides, fix asap
-        setLocation(getX() + deltaX, getY() + deltaY);
     }
 }
