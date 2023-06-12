@@ -10,9 +10,10 @@ public class beamOfSight extends Actor
 {
     Enemy spawn;
     int life = 120;
-    Color wall = getWorld().getColorAt(239,115);
+    Color wall;
     public beamOfSight(Enemy spawn){
         this.spawn=spawn;
+        wall = getWorld().getColorAt(239,115);
     }
     /**
      * Act - do whatever the beamOfSight wants to do. This method is called whenever
