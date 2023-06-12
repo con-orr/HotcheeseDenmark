@@ -12,8 +12,6 @@ public class beamOfSight extends Actor
     int life = 120;
     public beamOfSight(Enemy spawn){
         this.spawn=spawn;
-        int px = MyWorld.p1.getX();
-        int py = MyWorld.p1.getY();
     }
     /**
      * Act - do whatever the beamOfSight wants to do. This method is called whenever
@@ -41,6 +39,5 @@ public class beamOfSight extends Actor
         if(isTouching(wall.class)||life<=0){
             getWorld().removeObject(this);
         }
-        
     }
 }
