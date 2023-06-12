@@ -28,6 +28,12 @@ dependency7.type=UsesDependency
 dependency8.from=Enemy
 dependency8.to=MyWorld
 dependency8.type=UsesDependency
+<<<<<<< Updated upstream
+=======
+dependency9.from=Enemy
+dependency9.to=MyWorld
+dependency9.type=UsesDependency
+>>>>>>> Stashed changes
 editor.fx.0.height=0
 editor.fx.0.width=0
 editor.fx.0.x=0
