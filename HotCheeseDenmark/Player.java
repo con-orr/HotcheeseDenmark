@@ -8,6 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Player extends Actor
 {
+    char direction = 'r';
     int deltaX = 0; // x velocity
     int deltaY = 0; // y velocity
     boolean isHit = false; // checks if player is damaged
@@ -20,15 +21,34 @@ public class Player extends Actor
         // movement keys
         if (Greenfoot.isKeyDown("w")) {
             setLocation(getX(), getY() - 3);
+            direction = 'w';
         }
         if (Greenfoot.isKeyDown("s")) {
             setLocation(getX(), getY() + 3);
+            direction = 's';
         }
         if (Greenfoot.isKeyDown("a")) {
             setLocation(getX() - 3, getY());
+            direction = 'a';
         }
         if (Greenfoot.isKeyDown("d")) {
             setLocation(getX() + 3, getY());
+            direction = 'd';
+        }
+        // melee attack
+        if (Greenfoot.isKeyDown("space")) {
+            if (direction == 'w') {
+                getWorld().addObject(new melee(), getX(), getY() - 30);
+            }
+            if (direction == 's') {
+                getWorld().addObject(new melee(), getX(), getY() + 30);
+            }
+            if (direction == 'a') {
+                getWorld().addObject(new melee(), getX() - 30, getY());
+            }
+            if (direction == 'd') {
+                getWorld().addObject(new melee(), getX() + 30, getY());
+            }
         }
     }
 }
