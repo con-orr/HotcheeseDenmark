@@ -4,6 +4,8 @@ class.Player.image=man01.png
 class.melee.image=fist\ (2).png
 class.MyWorld.image=My\ project-1_706x800.png
 class.Player.image=Other_rat_image-removebg-preview\ (1)\ (2).png
+class.PlayerBat.image=pixilart-drawing\ (3)\ (1)\ (2).png
+class.PlayerGun.image=pixilart-drawing\ (2)\ (2).png
 class.beamOfSight.image=invis.png
 class.wall.image=lift-closed.png
 
