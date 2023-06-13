@@ -19,12 +19,16 @@ public class Player extends Actor
      */
     public void act()
     {
-        // movement keys
+        //item pickup and dropping
         if (Greenfoot.isKeyDown("g") && actorGrabbed == null && getOneIntersectingObject(Weapon2.class) != null) {
-            
+            // grab the object
+            actorGrabbed = (Actor) getOneIntersectingObject(Weapon2.class);
+            // the rest of this block will avoid the grabbed object from being hidden UNDER the Actor1 objects
+            getWorld().removeObject(actorGrabbed);
+            getWorld().addObject(actorGrabbed, getX(), getY());
         }
-        
-            
+        //movement keys
+
         if (Greenfoot.isKeyDown("w")) {
             setLocation(getX(), getY() - 3);
             direction = 'w';
@@ -57,6 +61,5 @@ public class Player extends Actor
             }
         }
     }
-    
-    
+
 }
