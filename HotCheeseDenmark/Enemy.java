@@ -11,6 +11,7 @@ public class Enemy extends Actor
     int health = 10;
     int seePlayer = 0;
     int sight = 0;
+    int weapon = 0;
     /**
      * Act - do whatever the Enemy wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -37,9 +38,6 @@ public class Enemy extends Actor
             if(MyWorld.p1.getY()<getY()){
                 setLocation(getX(),getY()-4);
             }
-
         }
     }
-
-
 }
