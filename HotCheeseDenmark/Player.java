@@ -40,19 +40,19 @@ public class Player extends Actor
         // melee attack
         if (Greenfoot.isKeyDown("space") && cooldown > 30) {
             if (direction == 'w') {
-                Actor actor = new melee();
-                getWorld().addObject(actor, getX(), getY() - 30);
+                Actor actor = new melee(90);
+                getWorld().addObject(actor, getX(), getY() - 30); 
             }
             if (direction == 's') {
-                Actor actor = new melee();
+                Actor actor = new melee(-90);
                 getWorld().addObject(actor, getX(), getY() + 30);
             }
             if (direction == 'a') {
-                Actor actor = new melee();
+                Actor actor = new melee(0);
                 getWorld().addObject(actor, getX() - 30, getY());
             }
             if (direction == 'd') {
-                Actor actor = new melee();
+                Actor actor = new melee(180);
                 getWorld().addObject(actor, getX() + 30, getY());
             }
             cooldown = 0;
