@@ -12,7 +12,7 @@ public class Player extends Actor
     int deltaX = 0; // x velocity
     int deltaY = 0; // y velocity
     boolean isHit = false; // checks if player is damaged
-    
+    Actor actorGrabbed = null;
     /**
      * Act - do whatever the Player wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -20,7 +20,11 @@ public class Player extends Actor
     public void act()
     {
         // movement keys
+        if (Greenfoot.isKeyDown("g") && actorGrabbed == null && getOneIntersectingObject(Weapon2.class) != null) {
+            
+        }
         
+            
         if (Greenfoot.isKeyDown("w")) {
             setLocation(getX(), getY() - 3);
             direction = 'w';
@@ -53,4 +57,6 @@ public class Player extends Actor
             }
         }
     }
+    
+    
 }
