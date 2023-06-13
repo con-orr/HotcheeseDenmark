@@ -8,6 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class melee extends Actor
 {
+    int frames = 10;
     /**
      * Act - do whatever the melee wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -15,5 +16,9 @@ public class melee extends Actor
     public void act()
     {
         // Add your action code here.
+        frames--;
+        if (frames <= 0) {
+            getWorld().removeObject(this);
+        }
     }
 }
