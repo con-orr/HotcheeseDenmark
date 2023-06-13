@@ -1,14 +1,10 @@
 #Greenfoot project file
 class.Enemy.image=man01.png
-<<<<<<< HEAD
-class.Player.image=man01.png
-class.melee.image=fist\ (2).png
-=======
 class.MyWorld.image=My\ project-1_706x800.png
 class.Player.image=Other_rat_image-removebg-preview\ (1)\ (2).png
 class.beamOfSight.image=invis.png
+class.melee.image=fist\ (2).png
 class.wall.image=lift-closed.png
->>>>>>> main
 dependency1.from=MyWorld
 dependency1.to=Player
 dependency1.type=UsesDependency
@@ -33,32 +29,16 @@ dependency7.type=UsesDependency
 dependency8.from=Enemy
 dependency8.to=beamOfSight
 dependency8.type=UsesDependency
-<<<<<<< HEAD
 dependency9.from=Enemy
 dependency9.to=MyWorld
 dependency9.type=UsesDependency
-editor.fx.0.height=723
-editor.fx.0.width=816
-editor.fx.0.x=282
-editor.fx.0.y=117
-height=1000
-package.numDependencies=9
-package.numTargets=6
-=======
-<<<<<<< Updated upstream
-=======
-dependency9.from=Enemy
-dependency9.to=MyWorld
-dependency9.type=UsesDependency
->>>>>>> Stashed changes
 editor.fx.0.height=0
 editor.fx.0.width=0
 editor.fx.0.x=0
 editor.fx.0.y=0
-height=1000
-package.numDependencies=8
-package.numTargets=5
->>>>>>> main
+height=991
+package.numDependencies=9
+package.numTargets=6
 project.charset=UTF-8
 publish.hasSource=false
 publish.locked=true
@@ -95,11 +75,7 @@ target3.width=120
 target3.x=0
 target3.y=0
 target4.height=70
-<<<<<<< HEAD
 target4.name=melee
-=======
-target4.name=wall
->>>>>>> main
 target4.showInterface=false
 target4.type=ClassTarget
 target4.width=120
@@ -120,7 +96,7 @@ target6.width=120
 target6.x=0
 target6.y=0
 version=3.0.0
-width=1296
+width=1295
 world.lastInstantiated=MyWorld
-xPosition=0
+xPosition=1
 yPosition=0
