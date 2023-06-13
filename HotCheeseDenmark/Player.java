@@ -27,6 +27,17 @@ public class Player extends Actor
             getWorld().removeObject(actorGrabbed);
             getWorld().addObject(actorGrabbed, getX(), getY());
         }
+        // check for actual dragging of the object after moving object
+        if (Greenfoot.isKeyDown("g") && actorGrabbed != null)
+        {
+            // drag the grabbed object
+            actorGrabbed.setLocation(getX(), getY());
+        }
+        if (Greenfoot.isKeyDown("q") && actorGrabbed != null)
+        {
+            // release the object
+            actorGrabbed = null;
+        }
         //movement keys
 
         if (Greenfoot.isKeyDown("w")) {
