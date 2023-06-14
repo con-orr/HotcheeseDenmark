@@ -11,14 +11,18 @@ public class Player extends Actor
     char direction = 'r';
     int deltaX = 0; // x velocity
     int deltaY = 0; // y velocity
+
     boolean isHit = false; // checks if player is damaged
     Actor actorGrabbed = null;
+    int cooldown = 0;
+
     /**
      * Act - do whatever the Player wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act()
     {
+
         //item pickup and dropping
         if (Greenfoot.isKeyDown("g") && actorGrabbed == null && getOneIntersectingObject(Weapon2.class) != null) {
             // grab the object
@@ -38,7 +42,9 @@ public class Player extends Actor
             // release the object
             actorGrabbed = null;
         }
+        cooldown++;
         //movement keys
+
 
         if (Greenfoot.isKeyDown("w")) {
             setLocation(getX(), getY() - 3);
@@ -57,19 +63,24 @@ public class Player extends Actor
             direction = 'd';
         }
         // melee attack
-        if (Greenfoot.isKeyDown("space")) {
+        if (Greenfoot.isKeyDown("space") && cooldown > 30) {
             if (direction == 'w') {
-                getWorld().addObject(new melee(), getX(), getY() - 30);
+                Actor actor = new melee(90);
+                getWorld().addObject(actor, getX(), getY() - 30); 
             }
             if (direction == 's') {
-                getWorld().addObject(new melee(), getX(), getY() + 30);
+                Actor actor = new melee(-90);
+                getWorld().addObject(actor, getX(), getY() + 30);
             }
             if (direction == 'a') {
-                getWorld().addObject(new melee(), getX() - 30, getY());
+                Actor actor = new melee(0);
+                getWorld().addObject(actor, getX() - 30, getY());
             }
             if (direction == 'd') {
-                getWorld().addObject(new melee(), getX() + 30, getY());
+                Actor actor = new melee(180);
+                getWorld().addObject(actor, getX() + 30, getY());
             }
+            cooldown = 0;
         }
     }
 
