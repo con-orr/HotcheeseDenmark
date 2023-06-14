@@ -7,6 +7,10 @@ class.Player.image=Other_rat_image-removebg-preview\ (1)\ (2).png
 class.PlayerBat.image=pixilart-drawing\ (3)\ (1)\ (2).png
 class.PlayerGun.image=pixilart-drawing\ (2)\ (2).png
 class.beamOfSight.image=invis.png
+
+class.wall.image=pixilart-drawing\ (1)\ (1).png
+
 class.melee.image=fist\ (2).png
 class.wall.image=lift-closed.png
+
 
