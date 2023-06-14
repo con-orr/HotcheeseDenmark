@@ -12,13 +12,14 @@ public class Enemy extends Actor
     int seePlayer = 0;
     int sight = 0;
     int weapon = 0;
+    int frames = 30;
     /**
      * Act - do whatever the Enemy wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act()
     {
-        // Add your action code here.
+        frames--;
         sight++;
         if(sight >=30){
             getWorld().addObject(new beamOfSight(this),getX(),getY());
@@ -38,6 +39,13 @@ public class Enemy extends Actor
             if(MyWorld.p1.getY()<getY()){
                 setLocation(getX(),getY()-4);
             }
+        }
+        if (isTouching(melee.class) && frames <= 0) {
+            health -= 5;
+            frames = 30;
+        }
+        if (health <= 0) {
+            getWorld().removeObject(this);
         }
     }
 }
