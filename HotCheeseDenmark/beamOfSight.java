@@ -37,7 +37,7 @@ public class beamOfSight extends Actor
         }
         getWorld().removeObject(this);
     }
-    public void addedToWorld​(World world){
+    public void addedToWorldat(World world){
         wall = getWorld().getColorAt(239,115);
     }
 }
