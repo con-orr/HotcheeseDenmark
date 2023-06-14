@@ -38,7 +38,5 @@ public class beamOfSight extends Actor
         }
         getWorld().removeObject(this);
     }
-    public void addedToWorld​(World world){
-        
-    }
+
 }
