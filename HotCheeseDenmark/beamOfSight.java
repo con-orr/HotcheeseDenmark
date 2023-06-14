@@ -9,11 +9,10 @@ import greenfoot.Color;
 public class beamOfSight extends Actor
 {
     Enemy spawn;
-    int life = 120;
-    Color wall;
+    Color wall = new Color(0,0,0);
     public beamOfSight(Enemy spawn){
         this.spawn=spawn;
-        turnTowards(MyWorld.p1.getX(),MyWorld.p1.getY());
+        
     }
     /**
      * Act - do whatever the beamOfSight wants to do. This method is called whenever
@@ -26,18 +25,20 @@ public class beamOfSight extends Actor
             if(getX()<0||getX()>=getWorld().getWidth()||getY()>=getWorld().getHeight()||getY()<0){
                 break;
             }
-            if(getWorld().getColorAt(getX(),getY()).equals(wall)){
-                 break;    
-            }
             if(isTouching(Player.class)){
                 spawn.seePlayer=60;
                 break;
             }
+            if(getWorld().getColorAt(getX(),getY()).equals(wall)){
+                System.out.print("hi");
+                 break;    
+            }
+            turnTowards(MyWorld.p1.getX(),MyWorld.p1.getY());
             move(1);
         }
         getWorld().removeObject(this);
     }
     public void addedToWorld​(World world){
-        wall = getWorld().getColorAt(239,115);
+        
     }
 }

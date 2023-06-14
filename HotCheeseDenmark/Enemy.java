@@ -10,7 +10,7 @@ public class Enemy extends Actor
 {
     int health = 10;
     int seePlayer = 0;
-    int sight = 0;
+    int beamTimer = 0;
     int weapon = 0;
     /**
      * Act - do whatever the Enemy wants to do. This method is called whenever
@@ -19,10 +19,10 @@ public class Enemy extends Actor
     public void act()
     {
         // Add your action code here.
-        sight++;
-        if(sight >=30){
+        beamTimer++;
+        if(beamTimer >=30){
             getWorld().addObject(new beamOfSight(this),getX(),getY());
-            sight = 0;
+            beamTimer = 0;
         }
         seePlayer--;
         if(seePlayer>0){
