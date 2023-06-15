@@ -22,11 +22,11 @@ public class Player extends Actor
         cooldown++;
         // movement keys
         if (Greenfoot.isKeyDown("w")) {
-            setLocation(getX(), getY() - 3);
+            move(-3);
             direction = 'w';
         }
         if (Greenfoot.isKeyDown("s")) {
-            setLocation(getX(), getY() + 3);
+            move(3);
             direction = 's';
         }
         if (Greenfoot.isKeyDown("a")) {
@@ -58,5 +58,11 @@ public class Player extends Actor
             cooldown = 0;
         }
         // rotating player
+        if (Greenfoot.isKeyDown("left")) {
+            turn(-5);
+        }
+        if (Greenfoot.isKeyDown("right")) {
+            turn(5);
+        }
     }
 }
