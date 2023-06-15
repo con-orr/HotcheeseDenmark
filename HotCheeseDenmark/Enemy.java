@@ -137,12 +137,20 @@ public class Enemy extends Actor
     }
     public void pathfind(){
         int[][] map = getMap();
+        int[] playerCord = new int[2];
+        int[] enemyCord = new int[2];
         for(int i = 0; i<getWorld().getHeight(); i++){
             for(int j = 0; j<getWorld().getWidth(); j++){
                 if(map[i][j]==3){
-                    
+                    enemyCord[0]=j;
+                    enemyCord[1]=i;
+                }
+                if(map[i][j]==1){
+                    playerCord[0]=j;
+                    playerCord[1]=i;
                 }
             }
         }
+        
     }
 }
