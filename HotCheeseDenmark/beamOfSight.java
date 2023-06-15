@@ -30,7 +30,7 @@ public class beamOfSight extends Actor
                 break;
             }
             if(getWorld().getColorAt(getX(),getY()).equals(wall)){
-                System.out.print("hi");
+                
                  break;    
             }
             turnTowards(MyWorld.p1.getX(),MyWorld.p1.getY());
