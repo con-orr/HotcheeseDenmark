@@ -1,6 +1,8 @@
 #Greenfoot project file
 class.BaseballBat.image=Baseball\ weapon\ (1)\ (1)(1)\ PELASE\ WORK.png
 class.Enemy.image=enemyUpdated.png
+class.Bullet.image=Bullet.png
+class.Enemy.image=pixilart-drawing\ (4).png
 class.Gun.image=pixilart-drawing\ (6).png
 class.MyWorld.image=pxArt\ (1).png
 class.MyWorld.image=pxArt\ (2).png
@@ -10,6 +12,7 @@ class.PlayerGun.image=pixilart-drawing\ (2)\ (2).png
 class.RazorSharpObject.image=RazorSharpObject-removebg-previewTRIM.png
 class.StartButton.image=frog.png
 class.StartScreen.image=hotlinestartscreen.png
+class.PlayerGun.image=pixilart-drawing\ (2)\ (1)\ (1).png
 class.beamOfSight.image=invis.png
 class.melee.image=new\ fist.png
 class.wall.image=lift-closed.png
