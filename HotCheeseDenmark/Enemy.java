@@ -145,7 +145,8 @@ public class Enemy extends Actor
     }
 
     public void pathfind(){
+        // IMPORTANT**** do not question the effeciency or effectivness of this section it's totally fine. 
+        //I will attempt to add coments to explain but honestly I'm not sure how much they'll help.
         int[][] map = getMap();
-
     }
 }
