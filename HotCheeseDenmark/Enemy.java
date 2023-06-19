@@ -29,22 +29,6 @@ public class Enemy extends Actor
     public void act()
     {
         aiDirectionDetection();
-        // Add your action code here.
-        beamTimer++;
-        if(beamTimer >=30){
-            getWorld().addObject(new beamOfSight(this),getX(),getY());
-            beamTimer = 0;
-        }
-        frames--;
-        seePlayer--;
-        if(seePlayer>0){
-            if(weapon.equals("fists")){
-                chase();
-            }
-        }
-        else{
-            idle();
-        }
         if (isTouching(melee.class) && frames <= 0) {
             health -= 5;
             frames = 30;
@@ -100,7 +84,6 @@ public class Enemy extends Actor
 
     public void idle(){
         aiDirectionDetection();
-        
         if(moveTime<=0){
             moveTime=30;
             randDirection = Greenfoot.getRandomNumber(4);
@@ -143,10 +126,22 @@ public class Enemy extends Actor
         }
         return map;
     }
-
-    public void pathfind(){
-        // IMPORTANT**** do not question the effeciency or effectivness of this section it's totally fine. 
-        //I will attempt to add coments to explain but honestly I'm not sure how much they'll help.
-        int[][] map = getMap();
+    
+    public void sightAndMovement(){
+        beamTimer++;
+        if(beamTimer >=30){
+            getWorld().addObject(new beamOfSight(this),getX(),getY());
+            beamTimer = 0;
+        }
+        frames--;
+        seePlayer--;
+        if(seePlayer>0){
+            if(weapon.equals("fists")){
+                chase();
+            }
+        }
+        else{
+            idle();
+        }
     }
 }
