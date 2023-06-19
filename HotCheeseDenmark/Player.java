@@ -8,6 +8,7 @@ import greenfoot.Color; // colors and stuff
  */
 public class Player extends Actor
 {
+    GreenfootImage GunPlayer = new GreenfootImage("Gunplayer.png"); 
     String direction = "a"; // for rotating character
     String pDirection = "w"; // for rotating punch sprite
     int deltaX = 0; // x velocity
@@ -27,6 +28,13 @@ public class Player extends Actor
         cooldown++;
         playerMovement();
         playerMelee();
+        playerPickup();
+    }
+    public void playerPickup(){
+        if(isTouching(Gun.class) && Greenfoot.isKeyDown("g")){
+            setImage(GunPlayer);
+            removeTouching(Gun.class);
+        }
     }
     // player movement method
     public void playerMovement() {
