@@ -13,5 +13,5 @@ comment4.target=void\ idle()
 comment5.params=
 comment5.target=int[][]\ getMap()
 comment6.params=
-comment6.target=void\ pathfind()
+comment6.target=void\ sightAndMovement()
 numComments=7
