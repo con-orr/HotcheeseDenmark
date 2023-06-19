@@ -53,19 +53,19 @@ public class Player extends Actor
         }
         // diagonal direction movement
         if (Greenfoot.isKeyDown("a") && Greenfoot.isKeyDown("w") && playerDirection[1] && playerDirection[3]) {
-            setLocation(getX() - 3, getY() - 3);
+            setLocation(getX() - 1, getY() - 1);
             setRotation(45);
         }
         if (Greenfoot.isKeyDown("w") && Greenfoot.isKeyDown("d") && playerDirection[3] && playerDirection[0]) {
-            setLocation(getX() + 3, getY() - 3);
+            setLocation(getX() + 1, getY() - 1);
             setRotation(135);
         }
         if (Greenfoot.isKeyDown("d") && Greenfoot.isKeyDown("s") && playerDirection[0] && playerDirection[2]) {
-            setLocation(getX() + 3, getY() + 3);
+            setLocation(getX() + 1, getY() + 1);
             setRotation(225);
         }
         if (Greenfoot.isKeyDown("a") && Greenfoot.isKeyDown("s") && playerDirection[1] && playerDirection[2]) {
-            setLocation(getX() - 3, getY() + 3);
+            setLocation(getX() - 1, getY() + 1);
         }
     }
     // enables clipping with map
