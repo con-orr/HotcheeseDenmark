@@ -18,6 +18,10 @@ public class Enemy extends Actor
     String weapon = "fists";
     int speed = 4;
     int delay = 60;
+    int[] playerCord = new int[2];
+    int[] enemyCord = new int[2];
+    int moveTime;
+    int randDirection;
     /**
      * Act - do whatever the Enemy wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -52,7 +56,7 @@ public class Enemy extends Actor
 
     public void aiDirectionDetection(){
         if(getX()+4<getWorld().getWidth()&& getX()-4>0 && getY()+4<getWorld().getHeight() && getY()-4>0){
-            if(getWorld().getColorAt(getX()+4,getY()).equals(wall)){
+            if(getWorld().getColorAt(getX()+4,getY()).equals(wall)){ 
                 aiDirection[0]=false;
             }
             else{
@@ -96,53 +100,53 @@ public class Enemy extends Actor
 
     public void idle(){
         aiDirectionDetection();
-        delay--;
-        if(delay<0){
-            int randDirection = Greenfoot.getRandomNumber(4);
-            int moveTime = Greenfoot.getRandomNumber(120);
-            if(moveTime>0){
-                moveTime--;
-                if(randDirection==0 && aiDirection[0]){
-                    setLocation(getX()+(speed/2),getY());
-                }
-                else if(randDirection==1 && aiDirection[1]){
-                    setLocation(getX()-(speed/2),getY());
-                }
-                else if(randDirection==2 && aiDirection[2]){
-                    setLocation(getX(),getY()+(speed/2));
-                }
-                else if(randDirection==3 && aiDirection[3]){
-                    setLocation(getX(),getY()-(speed/2));
-                }
+        
+        if(moveTime<=0){
+            moveTime=30;
+            randDirection = Greenfoot.getRandomNumber(4);
+        }
+        moveTime--;
+        if(moveTime>0){
+            if(randDirection==0 && aiDirection[0]){
+                setLocation(getX()+(speed/2),getY());
+            }
+            else if(randDirection==1 && aiDirection[1]){
+                setLocation(getX()-(speed/2),getY());
+            }
+            else if(randDirection==2 && aiDirection[2]){
+                setLocation(getX(),getY()+(speed/2));
+            }
+            else if(randDirection==3 && aiDirection[3]){
+                setLocation(getX(),getY()-(speed/2));
             }
         }
-        delay = 60;
     }
+
     public int[][] getMap(){
         int[][] map = new int[getWorld().getHeight()][getWorld().getWidth()];
         for(int i = 0; i<getWorld().getHeight(); i++){
             for(int j = 0; j<getWorld().getWidth(); j++){
                 if(MyWorld.p1.getY()==i && MyWorld.p1.getX()==j){
                     map[i][j] = 1;
+                    playerCord[0]=j;
+                    playerCord[1]=i;
                 }
                 if(getWorld().getColorAt(j,i).equals(wall)){
                     map[i][j]=2;
                 }
                 if(getY()==i && getX() == j){
                     map[i][j] = 3;
+                    enemyCord[0]=j;
+                    enemyCord[1]=i;
                 }
             }
         }
         return map;
     }
+
     public void pathfind(){
+        // IMPORTANT**** do not question the effeciency or effectivness of this section it's totally fine. 
+        //I will attempt to add coments to explain but honestly I'm not sure how much they'll help.
         int[][] map = getMap();
-        for(int i = 0; i<getWorld().getHeight(); i++){
-            for(int j = 0; j<getWorld().getWidth(); j++){
-                if(map[i][j]==3){
-                    
-                }
-            }
-        }
     }
 }

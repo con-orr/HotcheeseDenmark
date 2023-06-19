@@ -14,7 +14,11 @@ class.StartButton.image=frog.png
 class.StartScreen.image=hotlinestartscreen.png
 class.PlayerGun.image=pixilart-drawing\ (2)\ (1)\ (1).png
 class.beamOfSight.image=invis.png
+
+class.melee.image=fist\ (2).png
+
 class.melee.image=new\ fist.png
 class.wall.image=lift-closed.png
 class.melee.image=fist\ (2).png
 class.wall.image=pixilart-drawing\ (1)\ (1).png
+
