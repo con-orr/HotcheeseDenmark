@@ -22,6 +22,7 @@ public class Enemy extends Actor
     int[] enemyCord = new int[2];
     int moveTime;
     int randDirection;
+    GreenfootImage GunEnemy = new GreenfootImage("EnemyGun.png");
     /**
      * Act - do whatever the Enemy wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -36,6 +37,7 @@ public class Enemy extends Actor
         if (health <= 0) {
             getWorld().removeObject(this);
         }
+        sightAndMovement();
     }
 
     public void aiDirectionDetection(){
@@ -139,9 +141,21 @@ public class Enemy extends Actor
             if(weapon.equals("fists")){
                 chase();
             }
+            if(weapon.equals("gun")){
+                shoot();
+                chase();
+            }
         }
         else{
             idle();
         }
+        if(isTouching(Gun.class)){
+            setImage(GunEnemy);
+            weapon="gun";
+            removeTouching(Gun.class);
+        }
+    }
+    public void shoot(){
+        
     }
 }
