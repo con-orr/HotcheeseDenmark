@@ -30,6 +30,9 @@ public class Player extends Actor
         playerMelee();
         playerPickup();
     }
+    public void playerShoot(){
+        
+    }
     public void playerPickup(){
         if(isTouching(Gun.class) && Greenfoot.isKeyDown("g")){
             setImage(GunPlayer);
