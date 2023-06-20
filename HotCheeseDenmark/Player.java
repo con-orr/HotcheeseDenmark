@@ -1,5 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+import greenfoot.Color; // colors and stuff
 /**
  * Write a description of class Player here.
  * 
@@ -8,50 +8,111 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Player extends Actor
 {
-    char direction = 'r';
+    String direction = "a"; // for rotating character
+    String pDirection = "w"; // for rotating punch sprite
     int deltaX = 0; // x velocity
     int deltaY = 0; // y velocity
-    boolean isHit = false; // checks if player is damaged\
+    boolean isHit = false; // checks if player is damaged
     int cooldown = 0; // cooldown for attack
+    boolean[] playerDirection = {true, true, true, true};
+    //                           right left  down   up
+    Color wall = new Color(0, 0, 0); // Color of wall (black)
     /**
      * Act - do whatever the Player wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
      */
     public void act()
     {
+        playerDirectionDetection();
         cooldown++;
-        // movement keys
-        if (Greenfoot.isKeyDown("w")) {
+        playerMovement();
+        playerMelee();
+    }
+    // player movement method
+    public void playerMovement() {
+        // straight direction movement
+        if (Greenfoot.isKeyDown("w") && playerDirection[3]) {
             setLocation(getX(), getY() - 3);
-            direction = 'w';
+            pDirection = "w";
+            setRotation(90);
         }
-        if (Greenfoot.isKeyDown("s")) {
+        if (Greenfoot.isKeyDown("s") && playerDirection[2]) {
             setLocation(getX(), getY() + 3);
-            direction = 's';
+            pDirection = "s";
+            setRotation(-90);
         }
-        if (Greenfoot.isKeyDown("a")) {
+        if (Greenfoot.isKeyDown("a") && playerDirection[1]) {
             setLocation(getX() - 3, getY());
-            direction = 'a';
+            pDirection = "a";
+            setRotation(0);
         }
-        if (Greenfoot.isKeyDown("d")) {
+        if (Greenfoot.isKeyDown("d") && playerDirection[0]) {
             setLocation(getX() + 3, getY());
-            direction = 'd';
+            pDirection = "d";
+            setRotation(180);
         }
-        // melee attack
+        // diagonal direction movement
+        if (Greenfoot.isKeyDown("a") && Greenfoot.isKeyDown("w") && playerDirection[1] && playerDirection[3]) {
+            setLocation(getX() - 1, getY() - 1);
+            setRotation(45);
+        }
+        if (Greenfoot.isKeyDown("w") && Greenfoot.isKeyDown("d") && playerDirection[3] && playerDirection[0]) {
+            setLocation(getX() + 1, getY() - 1);
+            setRotation(135);
+        }
+        if (Greenfoot.isKeyDown("d") && Greenfoot.isKeyDown("s") && playerDirection[0] && playerDirection[2]) {
+            setLocation(getX() + 1, getY() + 1);
+            setRotation(225);
+        }
+        if (Greenfoot.isKeyDown("a") && Greenfoot.isKeyDown("s") && playerDirection[1] && playerDirection[2]) {
+            setLocation(getX() - 1, getY() + 1);
+        }
+    }
+    // enables clipping with map
+    public void playerDirectionDetection(){
+        if(getX()+3<getWorld().getWidth()&& getX()-3>0 && getY()+3<getWorld().getHeight() && getY()-3>0){
+            if(getWorld().getColorAt(getX()+3,getY()).equals(wall)){
+                playerDirection[0]=false;
+            }
+            else{
+                playerDirection[0]=true;
+            }
+            if(getWorld().getColorAt(getX()-3,getY()).equals(wall)){
+                playerDirection[1]=false;
+            }
+            else{
+                playerDirection[1]=true;
+            }
+            if(getWorld().getColorAt(getX(),getY()+3).equals(wall)){
+                playerDirection[2]=false;
+            }
+            else{
+                playerDirection[2]=true;
+            }
+            if(getWorld().getColorAt(getX(),getY()-3).equals(wall)){
+                playerDirection[3]=false;
+            }
+            else{
+                playerDirection[3]=true;
+            }
+        }
+    }
+    // enables player melee
+    public void playerMelee() {
         if (Greenfoot.isKeyDown("space") && cooldown > 30) {
-            if (direction == 'w') {
+            if (pDirection == "w") {
                 Actor actor = new melee(90);
                 getWorld().addObject(actor, getX(), getY() - 30); 
             }
-            if (direction == 's') {
+            if (pDirection == "s") {
                 Actor actor = new melee(-90);
                 getWorld().addObject(actor, getX(), getY() + 30);
             }
-            if (direction == 'a') {
+            if (pDirection == "a") {
                 Actor actor = new melee(0);
                 getWorld().addObject(actor, getX() - 30, getY());
             }
-            if (direction == 'd') {
+            if (pDirection == "d") {
                 Actor actor = new melee(180);
                 getWorld().addObject(actor, getX() + 30, getY());
             }

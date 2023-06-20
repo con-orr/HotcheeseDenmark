@@ -9,6 +9,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class MyWorld extends World
 {
     static Player p1;
+    int[] Enemy = {1, 2, 3, 4, 5, 6, 7, 8};
     Enemy e1;
     Enemy e2;
     Enemy e3; 
@@ -26,29 +27,46 @@ public class MyWorld extends World
     public MyWorld()
     {    
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
-        super(900, 600, 1,false); 
+        super(770, 460, 1); 
         p1 = new Player();
         addObject(p1,400,400);
         e1 = new Enemy();
-        addObject(e1,randX,randY);
         e2 = new Enemy();
-        addObject(e2,randX,randY);
         e3 = new Enemy();
-        addObject(e3,randX,randY);
         e4 = new Enemy();
-        addObject(e4,randX,randY);
         e5 = new Enemy();
-        addObject(e5,randX,randY);
         e6 = new Enemy();
-        addObject(e6,randX,randY);
         e7 = new Enemy();
-        addObject(e7,randX,randY);
         e8 = new Enemy();
-        addObject(e8,randX,randY);
     }
 
     public void act(){
-        randX = Greenfoot.getRandomNumber(getWidth());
-        randY = Greenfoot.getRandomNumber(getHeight());
+        for (int i = 0; i < 8; i++) {
+            randX = Greenfoot.getRandomNumber(getWidth());
+            randY = Greenfoot.getRandomNumber(getHeight());
+            if (i == 1) {
+                addObject(e1,randX,randY);
+            }
+            else if (i == 2) {
+                addObject(e2, randX, randY);
+            }
+            else if (i == 3) {
+                addObject(e3, randX, randY);
+            }
+            else if (i == 4) {
+                addObject(e4, randX, randY);
+            }
+            else if (i == 5) {
+                addObject(e5, randX, randY);
+            }
+            else if (i == 6) {
+                addObject(e6, randX, randY);
+            }else if (i == 7) {
+                addObject(e7, randX, randY);
+            }
+            else if (i == 8) {
+                addObject(e8, randX, randY);
+            }
+        }
     }
 }
