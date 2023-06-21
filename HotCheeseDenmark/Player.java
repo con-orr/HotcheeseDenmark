@@ -119,10 +119,5 @@ public class Player extends Actor
             cooldown = 0;
         }
     }
-    //baseball bat melee
-    public void BaseBallSwing() {
-        if (Greenfoot.isKeyDown("space") && cooldown > 30) &&  {
-            
-        }
-    }
+   
 }

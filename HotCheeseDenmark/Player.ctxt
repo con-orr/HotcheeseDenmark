@@ -10,6 +10,4 @@ comment3.params=
 comment3.target=void\ playerDirectionDetection()
 comment4.params=
 comment4.target=void\ playerMelee()
-comment5.params=
-comment5.target=void\ BaseBallSwing()
-numComments=6
+numComments=5
