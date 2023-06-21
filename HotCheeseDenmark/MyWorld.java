@@ -43,29 +43,7 @@ public class MyWorld extends World
         for (int i = 0; i < 8; i++) {
             randX = Greenfoot.getRandomNumber(getWidth());
             randY = Greenfoot.getRandomNumber(getHeight());
-            if (i == 1) { //good old else if chain never hurt anyone 
-                addObject(e1,randX,randY);
-            }
-            else if (i == 2) {
-                addObject(e2, randX, randY);
-            }
-            else if (i == 3) {
-                addObject(e3, randX, randY);
-            }
-            else if (i == 4) {
-                addObject(e4, randX, randY);
-            }
-            else if (i == 5) {
-                addObject(e5, randX, randY);
-            }
-            else if (i == 6) {
-                addObject(e6, randX, randY);
-            }else if (i == 7) {
-                addObject(e7, randX, randY);
-            }
-            else if (i == 8) {
-                addObject(e8, randX, randY);
-            }
+            addObject(new Enemy(), randX, randY);
         }
     }
 }
