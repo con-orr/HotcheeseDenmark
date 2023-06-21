@@ -37,6 +37,9 @@ public class MyWorld extends World
         e6 = new Enemy();
         e7 = new Enemy();
         e8 = new Enemy();
+        addObject(new Gun(),700,60);
+        addObject(new Gun(),107,383);
+        addObject(new Gun(),683,380);
     }
 
     public void act(){
