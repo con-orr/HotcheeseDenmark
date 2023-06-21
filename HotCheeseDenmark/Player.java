@@ -8,12 +8,14 @@ import greenfoot.Color; // colors and stuff
  */
 public class Player extends Actor
 {
+    int health = 300;
     GreenfootImage GunPlayer = new GreenfootImage("Gunplayer.png"); 
     String direction = "a"; // for rotating character
     String pDirection = "w"; // for rotating punch sprite
-    
+    String weapon = "fists";
     int deltaX = 0; // x velocity
     int deltaY = 0; // y velocity
+    int winTimer = 0;
     boolean isHit = false; // checks if player is damaged
     int cooldown = 0; // cooldown for attack
     boolean[] playerDirection = {true, true, true, true};
@@ -25,18 +27,43 @@ public class Player extends Actor
      */
     public void act()
     {
+        winTimer++;
+        if(winTimer>3000){
+            Greenfoot.setWorld(new WinWorld());
+        }
         playerDirectionDetection();
         cooldown++;
         playerMovement();
         playerMelee();
         playerPickup();
+        shoot();
+        dead();
     }
-    public void playerShoot(){
-        
+
+    public void dead(){
+        if(isTouching(Enemy.class)){
+            health--;
+        }
+        if(isTouching(Bullet.class)){
+            health -= 300;
+        }
+        if(health<=0){
+            Greenfoot.setWorld(new LoseWorld());
+        }
     }
+
+    public void shoot(){
+        if(weapon.equals("Gun")){
+            if(Greenfoot.mousePressed(null)){
+                getWorld().addObject(new Bullet(),getX(),getY());
+            }
+        }
+    }
+
     public void playerPickup(){
         if(isTouching(Gun.class) && Greenfoot.isKeyDown("g")){
             setImage(GunPlayer);
+            weapon = "Gun";
             removeTouching(Gun.class);
         }
     }
@@ -131,4 +158,5 @@ public class Player extends Actor
             cooldown = 0;
         }
     }
+    
 }

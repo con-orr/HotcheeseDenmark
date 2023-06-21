@@ -10,20 +10,17 @@ public class Bullet extends Actor
 { 
     MouseInfo mouse = Greenfoot.getMouseInfo();
     Color wall = new Color(0,0,0);
-    public void Bullet(){
+    
+    public void addedToWorld(World world){
         turnTowards(mouse.getX(), mouse.getY());
     }
+        
     public void act()
     {
         // Add your action code here.
-        for(int i =0; i<10; i++){
-            move(1);
-            if(getWorld().getColorAt(getX(),getY()).equals(wall)){
-                getWorld().removeObject(this);
-            }
+        move(10);
+        if(getWorld().getColorAt(getX(),getY()).equals(wall)||getX()<0||getX()>=getWorld().getWidth()||getY()>=getWorld().getHeight()||getY()<0){
+            getWorld().removeObject(this);
         }
-        
-        
-        
     }
 }
