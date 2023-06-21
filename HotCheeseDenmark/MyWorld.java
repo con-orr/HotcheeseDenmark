@@ -8,9 +8,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class MyWorld extends World
 {
-    static Player p1;
-    int[] Enemy = {1, 2, 3, 4, 5, 6, 7, 8};
-    Enemy e1;
+    static Player p1;//just made making all of the enemy code faster for me
+    Enemy e1; //could have just used new enemy() instead of setting all of this up but it's 11pm so either someone can change this in the morning or eh its fine
     Enemy e2;
     Enemy e3; 
     Enemy e4;
@@ -44,7 +43,7 @@ public class MyWorld extends World
         for (int i = 0; i < 8; i++) {
             randX = Greenfoot.getRandomNumber(getWidth());
             randY = Greenfoot.getRandomNumber(getHeight());
-            if (i == 1) {
+            if (i == 1) { //good old else if chain never hurt anyone 
                 addObject(e1,randX,randY);
             }
             else if (i == 2) {

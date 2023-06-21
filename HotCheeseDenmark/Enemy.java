@@ -8,18 +8,20 @@ import greenfoot.Color;
  */
 public class Enemy extends Actor
 {
+    //some of these might not be used I went through a lot of methods that I ended up ditching and I'm not sure if I left any variables
     int health = 10;
+    int fireRate = 60;
     int seePlayer = 0;
     int beamTimer = 0;
-    int frames = 30;
+    int frames = 30;//Brayden what is this doing?
     Color wall = new Color(0,0,0);
     boolean[] aiDirection = {true,true,true,true};
     //                       right left down up
     String weapon = "fists";
     int speed = 4;
     int delay = 60;
-    int[] playerCord = new int[2];
-    int[] enemyCord = new int[2];
+    int[] playerCord = new int[2]; //not used explained in getMap method
+    int[] enemyCord = new int[2];// not used explained in getMap method
     int moveTime;
     int randDirection;
     GreenfootImage GunEnemy = new GreenfootImage("EnemyGun.png");
@@ -30,17 +32,12 @@ public class Enemy extends Actor
     public void act()
     {
         aiDirectionDetection();
-        if (isTouching(melee.class) && frames <= 0) {
-            health -= 5;
-            frames = 30;
-        }
-        if (health <= 0) {
-            getWorld().removeObject(this);
-        }
         sightAndMovement();
+        getHit();
     }
 
     public void aiDirectionDetection(){
+        //detects which directions the enemy can go without hitting walls
         if(getX()+4<getWorld().getWidth()&& getX()-4>0 && getY()+4<getWorld().getHeight() && getY()-4>0){
             if(getWorld().getColorAt(getX()+4,getY()).equals(wall)){ 
                 aiDirection[0]=false;
@@ -69,22 +66,24 @@ public class Enemy extends Actor
         }
     }
 
-    public void chase(){
+    public void chase(int speed){
+        //makes the enemy chase the player at a determined speed
         if(MyWorld.p1.getX()>getX()&&aiDirection[0]){
-            setLocation(getX()+4,getY());
+            setLocation(getX()+speed,getY());
         }
         if(MyWorld.p1.getX()<getX()&&aiDirection[1]){
-            setLocation(getX()-4,getY());
+            setLocation(getX()-speed,getY());
         }
         if(MyWorld.p1.getY()>getY()&&aiDirection[2]){
-            setLocation(getX(),getY()+4);
+            setLocation(getX(),getY()+speed);
         }
         if(MyWorld.p1.getY()<getY()&&aiDirection[3]){
-            setLocation(getX(),getY()-4);
+            setLocation(getX(),getY()-speed);
         }
     }
 
     public void idle(){
+        // this method just makes the enemy randomly walk around when it doesn't see the player
         aiDirectionDetection();
         if(moveTime<=0){
             moveTime=30;
@@ -108,6 +107,7 @@ public class Enemy extends Actor
     }
 
     public int[][] getMap(){
+        //Note: method not used I just didn't want to delete it incase I come back and improve the game after the course
         int[][] map = new int[getWorld().getHeight()][getWorld().getWidth()];
         for(int i = 0; i<getWorld().getHeight(); i++){
             for(int j = 0; j<getWorld().getWidth(); j++){
@@ -130,20 +130,21 @@ public class Enemy extends Actor
     }
     
     public void sightAndMovement(){
+        //counter to spawn a new beam once every thirty frames
         beamTimer++;
         if(beamTimer >=30){
             getWorld().addObject(new beamOfSight(this),getX(),getY());
             beamTimer = 0;
         }
-        frames--;
-        seePlayer--;
+        frames--; // I don't know Brayden added this frames thing for hit detection on the players melee
+        seePlayer--; //the beam of sight will update the seePlayer int whenever the enemy can see the player, this counts down to make the enemy stop seeing the player after if the beams are no longer reaching the player.
         if(seePlayer>0){
             if(weapon.equals("fists")){
-                chase();
+                chase(4);
             }
-            if(weapon.equals("gun")){
+            else if(weapon.equals("gun")){
                 shoot();
-                chase();
+                chase(1);
             }
         }
         else{
@@ -156,6 +157,23 @@ public class Enemy extends Actor
         }
     }
     public void shoot(){
-        
+        if(fireRate>0){
+            fireRate--; // makes it so that the enemy doesn't rapid fire every frame
+        }
+        if(fireRate<=0){
+            getWorld().addObject(new EnemyBullet(),getX(),getY());
+            //could have gotten away with only one bullet class but didn't have time so made two seperate
+            fireRate = 60;
+        }
+    }
+    public void getHit(){
+        //makes the enemy get hit by player attacks
+        if (isTouching(melee.class) && frames <= 0) {
+            health -= 5;
+            frames = 30;
+        }
+        if (health <= 0) {
+            getWorld().removeObject(this);
+        }
     }
 }
