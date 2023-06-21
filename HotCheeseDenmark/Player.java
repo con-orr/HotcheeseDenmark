@@ -11,6 +11,7 @@ public class Player extends Actor
     GreenfootImage GunPlayer = new GreenfootImage("Gunplayer.png"); 
     String direction = "a"; // for rotating character
     String pDirection = "w"; // for rotating punch sprite
+    
     int deltaX = 0; // x velocity
     int deltaY = 0; // y velocity
     boolean isHit = false; // checks if player is damaged
