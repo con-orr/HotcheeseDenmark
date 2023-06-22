@@ -13,7 +13,7 @@ public class Enemy extends Actor
     int fireRate = 60;
     int seePlayer = 0;
     int beamTimer = 0;
-    int frames = 30;//Brayden what is this doing?
+    int immuneFrames = 30;
     Color wall = new Color(0,0,0);
     boolean[] aiDirection = {true,true,true,true};
     //                       right left down up
@@ -136,7 +136,7 @@ public class Enemy extends Actor
             getWorld().addObject(new beamOfSight(this),getX(),getY());
             beamTimer = 0;
         }
-        frames--; // I don't know Brayden added this frames thing for hit detection on the players melee
+        
         seePlayer--; //the beam of sight will update the seePlayer int whenever the enemy can see the player, this counts down to make the enemy stop seeing the player after if the beams are no longer reaching the player.
         if(seePlayer>0){
             if(weapon.equals("fists")){
@@ -168,9 +168,14 @@ public class Enemy extends Actor
     }
     public void getHit(){
         //makes the enemy get hit by player attacks
-        if (isTouching(melee.class) && frames <= 0) {
+        immuneFrames--;
+        if (isTouching(melee.class) && immuneFrames <= 0) {
             health -= 5;
-            frames = 30;
+            immuneFrames = 30;
+        }
+        if(isTouching(Bullet.class)){
+            health-=10;
+            removeTouching(Bullet.class);
         }
         if (health <= 0) {
             getWorld().removeObject(this);
